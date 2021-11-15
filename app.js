@@ -12,8 +12,8 @@ app.use(express.static(__dirname + "/client"));
 app.get("/", (req, res, next) => {
   res.sendFile(__dirname + "/client/paint.html");
 });
-app.get("/a", (req, res, next) => {
-  res.sendFile(__dirname + "/client/test.html");
+app.get("/test", (req, res, next) => {
+  res.send("It works !!!");
 });
 
 io.on("connection", (client) => {
