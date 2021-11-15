@@ -4,7 +4,7 @@ var app = express();
 var server = require("http").createServer(app);
 
 // Creation of a web socket server using socketio
-
+var port = process.env.PORT || 8797
 var io = require("socket.io")(server);
 
 // Indicate where static files are located
@@ -12,8 +12,8 @@ app.use(express.static(__dirname + "/client"));
 app.get("/", (req, res, next) => {
   res.sendFile(__dirname + "/client/paint.html");
 });
-app.get("/a", (req, res, next) => {
-  res.sendFile(__dirname + "/client/test.html");
+app.get("/test", (req, res, next) => {
+  res.send("It works !!!");
 });
 
 io.on("connection", (client) => {
@@ -46,4 +46,4 @@ io.on("disconnect", () => {
   console.log("the user has left");
 });
 
-server.listen(8797, console.log("server in running on port 8797"));
+server.listen(port, console.log(`server in running on port ${port}`));

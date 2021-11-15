@@ -14,5 +14,9 @@
     "start": "node app.js"
   },
   "main": "app.js",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "16.5.0",
+    "npm": "7.19.1"
+  }
 }
