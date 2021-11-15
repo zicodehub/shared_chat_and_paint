@@ -5,6 +5,7 @@
   "description": "Simple HTML5 chat using nowJS and NodeJS",
   "dependencies": {
     "express": "^4.17.1",
+    "nodemon": "^2.0.15",
     "now": ">=0.7.6",
     "path": "^0.12.7",
     "socket.io": "^4.3.2"
