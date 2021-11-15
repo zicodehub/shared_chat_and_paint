@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!-- Note : in HTML5 the DOCTYPE can be memorized by a normal human being ! -->
-<!-- Common mistake : if we put a comment before the doctype element, Internet Explorer will not
-     consider the document as a HTML5 document and the canvas tag for example,
-     will not be displayed ! -->
 <html>
   <head>
     <title>Step 7 :: Simple Paint</title>
@@ -105,6 +101,7 @@ be served by the NodeJS server -->
         // Create the pseudo object which will handle the main canvas
       // Run when the DOM is ready
       $(document).ready(function () {
+        console.log("1")
         var icam = false ;
         paint = new PaintObject("canvasMain");
         // Bind events to the canvas
@@ -118,7 +115,9 @@ be served by the NodeJS server -->
             paint.processPaintCommand(paintCommand);
         })
 
+        console.log("COOL")
         initCam() ;
+        console.log("SUPER")
         $("#constantWebcam").click(()=>{
             icam = true ;
             console.log("Visio conf")
@@ -132,6 +131,7 @@ be served by the NodeJS server -->
 
             // console.log('recpetion video conference')
         });
+
 
       });
  </script>

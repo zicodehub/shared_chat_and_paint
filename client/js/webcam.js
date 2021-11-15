@@ -19,10 +19,12 @@ const initCam = () => {
 	function loadCamera(stream){
 	  try {
 	      video.srcObject = stream;
+	      console.log("stream")
 	  } 
 	  
 	  catch (error) {
 	   video.src = URL.createObjectURL(stream);
+	      console.log("objetxt")
 	  }
 
 	   logger("Camera connected");
@@ -47,6 +49,9 @@ const initCam = () => {
 	            video: true, 
 	            audio: false
 	        },loadCamera,loadFail);
+	    }
+	    else {
+	    	alert("Votre navigateur ne supporte pas la webcam")
 	    }
 
 	    // setInterval(function(){
