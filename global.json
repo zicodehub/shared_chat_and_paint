@@ -1,0 +1,17 @@
+{
+
+  "Server" : {
+    "settings" :{
+      "port"   : "8000",
+      "socket" : "8001"
+    }
+  },
+
+  "Proxy" : {
+    "settings" :{
+      "port"         : "9090",
+      "storage_path" : "client",
+    }
+  }
+  
+}

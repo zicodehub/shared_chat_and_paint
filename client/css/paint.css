@@ -1,0 +1,173 @@
+body{
+    overflow			: hidden;
+
+    background-color	: #eeeeee;
+    color				: #778777;
+    font-family			: "Trebuchet MS", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family			: Georgia, serif;
+    text-shadow         : rgba(64, 64, 64, 0.5) 4px 4px 5px;
+    margin              : 5px 10px;
+    text-align          : center;
+}
+h1{
+    font-size			: 1.8em;
+}
+h2{
+    font-size			: 1.7em;
+}
+h3{
+    font-size			: 1.6em;
+}
+h4{
+    font-size			: 1.5em;
+}
+h5{
+    font-size			: 1.4em;
+}
+h6{
+    font-size			: 1.3em;
+}
+
+
+div#content {
+    position			        : absolute;
+    left				        : 0;
+    top					        : 0;
+
+    height                      : 420px;
+    width                       : 600px;
+
+    border-bottom-right-radius  : 20px;
+}
+div#content div#divCanvas canvas {
+    position                    : absolute;
+    top                         : 0;
+    left                        : 0;
+
+    border-right      			: 1px solid #aaaaaa;
+    border-bottom 				: 1px solid #aaaaaa;
+    border-bottom-right-radius	: 20px;
+
+    cursor                      : crosshair;
+}
+div#content div#divCanvas canvas#canvasMain {
+    background-color            : #FFFFFF;
+}
+
+div#chat {
+    position				    : absolute;
+    bottom					    : 0;
+    left					    : 0;
+
+    height                      : 250px;
+    width                       : 600px;
+
+    border-top-right-radius     : 20px;
+    border-top 				    : 1px solid #aaaaaa;
+    border-right 			    : 1px solid #aaaaaa;
+
+    background-color            : #cccccc;
+}
+div#chat div#chatMessages {
+    position				    : absolute;
+    top					        : 10px;
+    left					    : 10px;
+
+
+    height                      : 200px;
+    width                       : 580px;
+
+    font-size			        : .8em;
+    overflow			        : auto;
+}
+div#chat input#chatTextInput {
+    position				    : absolute;
+    bottom				        : 10px;
+    left					    : 10px;
+
+    width                       : 530px;
+
+    border                      : none;
+}
+div#chat button.menuButton {
+    position				    : absolute;
+    bottom				        : 10px;
+    right					    : 10px;
+
+    border                      : none;
+
+    background-color	        : #eeeeee;
+    color				        : #778777;
+
+    padding				        : 1px 5px;
+}
+div#chat button.menuButton:hover {
+    color				        : #556555;
+}
+
+div#righColumn{
+    position				    : absolute;
+    right					    : 0;
+    top						    : 0;
+
+    height                      : 750px;
+    width                       : 400px;
+}
+div#righColumn div#text {
+    position				    : absolute;
+    right					    : 0;
+    top						    : 0;
+
+    height                      : 200px;
+    width                       : 400px;
+
+    overflow			        : auto;
+}
+
+div#righColumn div#text p {
+    margin                  : 0px 10px 0px 15px;
+}
+div#righColumn div#drawCommands {
+    position				    : absolute;
+    right					    : 0;
+    top						    : 200px;
+
+    height                      : 200px;
+    width                       : 400px;
+
+    background-color            : #445444;
+    padding-bottom              : 10px;
+    text-align                  : center;
+}
+div#righColumn div#drawCommands h6{
+    background-color       : #445444;
+    text-align             : center;
+    padding                : 10px 0px 0px 0px;
+}
+div#righColumn div#drawCommands span {
+    display                 : inline-block;
+    margin                  : 0px 10px;
+    cursor                  : pointer;
+}
+div#righColumn div#drawCommands ul li {
+    text-align              : left;
+    list-style              : none;
+    margin                  : 5px 0px;
+}
+div#righColumn div#webcamDiv {
+    position				    : absolute;
+    right					    : 0;
+    bottom  				    : 0;
+
+    height                      : 340px;
+    width                       : 400px;
+
+    text-align                  : center;
+}
+div#righColumn div#webcamDiv video {
+    height                      : 250px;
+    width                       : 250px;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "paint_html5_multi",
+  "version": "0.3.0",
+  "author": "Michel Buffa <buffa@unice.fr>",
+  "description": "Simple HTML5 chat using nowJS and NodeJS",
+  "dependencies": {
+    "express": "^4.17.1",
+    "now": ">=0.7.6",
+    "path": "^0.12.7",
+    "socket.io": "^4.3.2"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "server.js",
+  "license": "ISC"
+}

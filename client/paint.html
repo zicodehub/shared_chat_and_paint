@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!-- Note : in HTML5 the DOCTYPE can be memorized by a normal human being ! -->
+<!-- Common mistake : if we put a comment before the doctype element, Internet Explorer will not
+     consider the document as a HTML5 document and the canvas tag for example,
+     will not be displayed ! -->
+<html>
+  <head>
+    <title>Step 7 :: Simple Paint</title>
+    <!-- note : in HTML5 no need to specify type=...-->
+    <link rel="stylesheet" href="css/paint.css" />
+   
+  </head>
+  <body>
+    <div id="home">
+    <div id="content">
+        <div id="divCanvas">
+            <canvas id="canvasMain">
+                <p>Canvas tag not supported by your browser</p>
+            </canvas>
+        </div>
+
+    </div>
+    <div id="righColumn">
+        <div id="text">
+            <h4>Canvas Paint, version 8</h4>
+
+            <p>
+                            <img id="play" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/IMG_%28business%29.svg/langfr-280px-IMG_%28business%29.svg.png" width="100px" height="100px" style="z-index: 10000; position: absolute; top: 0, right: 0;" />
+
+                <br/>
+                <br/>
+            </p>
+        </div>
+        <div id="userlist">
+        </div>
+        <div id="drawCommands">
+            <h6>Pick a tool</h6>
+            <span id="line">line</span>
+            <span id="pencil">pencil</span>
+            <span id="rectangle">rectangle</span>
+            <span id="circle">circle</span>
+            <span id="webcam">webcam</span>
+            <ul>
+                <li>
+                    Fill color:
+                    <!-- <input id="fillColor" type="color" value="FFFFFF"/> -->
+                    <input id="fillColor" class="color" value="FFFFFF"/>
+                </li>
+                <li>
+                    Stroke color:
+                    <!-- <input id="strokeColor" type="color" value="FFFFFF"/> -->
+                    <input id="strokeColor" class="color" value="000000"/>
+                </li>
+                <li>
+                    <!-- works only in Chrome and Opera, will display a standard input text in Firefox -->
+                    Stroke size: <input id="strokeSize" type="range" min="0" max="20" value="1" step="0.5"
+                                        style="position:relative;top:6px;"/>
+                </li>
+                <li>
+                    Fill shapes : <input id="fillShapes" type="checkbox" checked/>
+                </li>
+            </ul>
+        </div>
+        <div id="webcamDiv">
+            <h4>Simple web camera display</h4>
+            <video id="output" width="195" height="195" autoplay="true" autoplay>Put your fallback message here.</video>
+            <canvas style="display:none;" id="preview"></canvas>
+            <div id="log"></div>
+
+
+
+
+        </div>
+    </div>
+    <div id="chat">
+        <!-- Chat is here ! -->
+        <div id="chatMessages"></div>
+        <input type="text" id="chatTextInput">
+        <button class="menuButton" type="button" id="chatSendButton">Send</button>
+        <!-- End of Chat -->
+    </div>
+</div>
+
+
+     <script src="/socket.io/socket.io.js"></script>
+     <script>   
+         var socket = io();
+    </script>
+     <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/paint.js"></script>
+    <script src="js/drawingtools.js"></script>
+    <!-- add this if you are not running in Opera and want a color chooser -->
+    <script src="js/jscolor/jscolor.js"></script>
+    <!-- NowJS is a High level lib built on top of socket.io. Uses WebSockets if available. The page needs to
+be served by the NodeJS server -->
+    <script src="js/chat.js"></script>
+    <script src="js/webcam.js"></script> 
+    <script type="text/javascript">
+         const lastname = prompt('votre nom')
+         const  firstname = prompt('votre prenom')
+         socket.emit('infouser',(lastname,firstname))
+        // Create the pseudo object which will handle the main canvas
+      // Run when the DOM is ready
+      $(document).ready(function () {
+        var icam = false ;
+        paint = new PaintObject("canvasMain");
+        // Bind events to the canvas
+        paint.bindMultiplexEvents();
+          // prompts a dialog and asks for a nickname
+        //   socket.name = prompt("What's your name?", "");
+          //Create the pseudo object which will handle the chat
+          chat = new ChatObject(socket,lastname,firstname);
+
+        socket.on('paint',(paintCommand)=> {
+            paint.processPaintCommand(paintCommand);
+        })
+
+        $("#webcam").click(()=>{
+            icam = true ;
+            initCam() ;
+        })
+
+        socket.on('stream',function(image){
+            if(! icam) {
+                $('#play').attr('src',image);                
+            }
+            // $('#log').text(image);
+
+            // console.log('recpetion video conference')
+        });
+
+      });
+ </script>
+  </body>
+</html>
