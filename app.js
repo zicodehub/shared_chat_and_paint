@@ -4,7 +4,7 @@ var app = express();
 var server = require("http").createServer(app);
 
 // Creation of a web socket server using socketio
-var port process.env.PORT || 8797
+var port = process.env.PORT || 8797
 var io = require("socket.io")(server);
 
 // Indicate where static files are located
