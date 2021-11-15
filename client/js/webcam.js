@@ -49,9 +49,9 @@ const initCam = () => {
 	        },loadCamera,loadFail);
 	    }
 
-	    setInterval(function(){
-	        Draw(video,context);
-	    },0.1);
+	    // setInterval(function(){
+	    //     Draw(video,context);
+	    // },0.1);
 	});
 
 

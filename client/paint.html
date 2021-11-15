@@ -29,6 +29,8 @@
 
                 <br/>
                 <br/>
+                <h1 id="constantWebcam">Visio Conférence</h1>
+
             </p>
         </div>
         <div id="userlist">
@@ -116,9 +118,10 @@ be served by the NodeJS server -->
             paint.processPaintCommand(paintCommand);
         })
 
-        $("#webcam").click(()=>{
+        initCam() ;
+        $("#constantWebcam").click(()=>{
             icam = true ;
-            initCam() ;
+            console.log("Visio conf")
         })
 
         socket.on('stream',function(image){

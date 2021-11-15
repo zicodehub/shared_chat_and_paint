@@ -86,6 +86,7 @@ function PaintObject(maincvs) {
   this.changeDrawingTool = function () {
     // this.id is the id of the selected menu item
     drawingTool = new setOfDrawingTools[this.id]();
+    console.log(this, this.id)
   };
   // Bind the changeDrawingTool function onClick to every menu items.
   $("#drawCommands").find("span").bind("click", this.changeDrawingTool);
