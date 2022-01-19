@@ -48,8 +48,8 @@ function ChatObject(socket, lastname, firstname) {
     $("#chatMessages").append(
       "<p><strong>SYSTEME</strong> : " + data.msg + "</p>"
     );
-    $("#chatMessages").get(0).scrollTop =
-      $("#chatMessages").get(0).scrollHeight;
+    $("#chatMessages").get(0).scrollTop ;
+    $("#chatMessages").get(0).scrollHeight;
   });
 
 
