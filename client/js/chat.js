@@ -24,7 +24,7 @@ function ChatObject(socket, lastname, firstname) {
 
       $("#chatMessages").append(
         // display the message to the sende
-        "<p><strong>" + lastname + "</strong> : " + chatText + "</p>"
+        "<p><strong>" + firstname + "</strong> : " + chatText + "</p>"
       );
       $("#chatMessages").get(0).scrollTop =
         $("#chatMessages").get(0).scrollHeight;
@@ -41,4 +41,16 @@ function ChatObject(socket, lastname, firstname) {
     $("#chatMessages").get(0).scrollTop =
       $("#chatMessages").get(0).scrollHeight;
   });
+
+  socket.on("welcome", (data) => {
+    console.log("Welcommmmme !!!", data);
+    // appends the incoming message to the messageLogs
+    $("#chatMessages").append(
+      "<p><strong>SYSTEME</strong> : " + data.msg + "</p>"
+    );
+    $("#chatMessages").get(0).scrollTop =
+      $("#chatMessages").get(0).scrollHeight;
+  });
+
+
 }

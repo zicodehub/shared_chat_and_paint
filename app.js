@@ -17,6 +17,11 @@ app.get("/test", (req, res, next) => {
 });
 
 io.on("connection", (client) => {
+
+  client.broadcast.emit("welcome", {
+    msg: `${lastname} ${lastname} a rejoint le chat`,
+  });
+
   client.on("infouser", (lastname, firstname) => {
     // global storing of user data in the server with socket
     client.lastname = lastname;
@@ -42,6 +47,8 @@ io.on("connection", (client) => {
 
   console.log("Client connected...");
 });
+
+
 io.on("disconnect", () => {
   console.log("the user has left");
 });
