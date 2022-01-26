@@ -65,9 +65,6 @@
             <canvas style="display:none;" id="preview"></canvas>
             <div id="log"></div>
 
-
-
-
         </div>
     </div>
     <div id="chat">
@@ -83,6 +80,8 @@
      <script src="/socket.io/socket.io.js"></script>
      <script>   
          var socket = io();
+         const lastname = prompt('votre nom')
+         const  firstname = prompt('votre prenom')
     </script>
      <script src="js/jquery-1.7.2.min.js"></script>
     <script src="js/utils.js"></script>
@@ -95,8 +94,7 @@ be served by the NodeJS server -->
     <script src="js/chat.js"></script>
     <script src="js/webcam.js"></script> 
     <script type="text/javascript">
-         const lastname = prompt('votre nom')
-         const  firstname = prompt('votre prenom')
+       
          socket.emit('infouser',(lastname,firstname))
         // Create the pseudo object which will handle the main canvas
       // Run when the DOM is ready

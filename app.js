@@ -19,7 +19,7 @@ app.get("/test", (req, res, next) => {
 io.on("connection", (client) => {
 
   client.broadcast.emit("welcome", {
-    msg: `${lastname} ${lastname} a rejoint le chat`,
+    msg: ` un nouvel ulisateur a rejoint le chat ---`,
   });
 
   client.on("infouser", (lastname, firstname) => {
