@@ -18,14 +18,16 @@ app.get("/test", (req, res, next) => {
 
 io.on("connection", (client) => {
 
-  client.broadcast.emit("welcome", {
-    msg: `${lastname} ${lastname} a rejoint le chat`,
-  });
 
   client.on("infouser", (lastname, firstname) => {
     // global storing of user data in the server with socket
     client.lastname = lastname;
     client.firstname = firstname;
+  
+    client.broadcast.emit("welcome", {
+      msg: `${lastname}a rejoint le chat`,
+    });
+  
   });
   client.on("msg", (msg) => {
     console.log("msg SERVER: ", msg);
