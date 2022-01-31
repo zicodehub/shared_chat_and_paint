@@ -51,7 +51,7 @@ function ChatObject(socket, lastname, firstname) {
     console.log("Welcommmmme !!!", data);
     // appends the incoming message to the messageLogs
     $("#chatMessages").append(
-        `<p class="msg received received-from-system"><strong class="user-name user-system"> Système </strong> :  <span class="msg_content">${data.msg}</span> </p>`
+        `<p class="msg msg-system received received-from-system"><strong class="user-name user-system"> Système </strong> :  <span class="msg_content">${data.msg}</span> </p>`
     );
     $("#chatMessages").get(0).scrollTop ;
     $("#chatMessages").get(0).scrollHeight;

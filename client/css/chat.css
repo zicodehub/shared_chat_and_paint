@@ -78,17 +78,31 @@ div#chat button.menuButton:hover {
 }
 
 .msg-content {
+    position: relative;
     color: gray;
+    max-width: 70%;
+    overflow-wrap: break-word;
 }
 
 .user-name {
     font-weight: bold;
     text-decoration: underline;
     display: inline;
+    font-size: 0.7em ;
 }
+
+
+.msg-file-link {
+    text-decoration: none ;
+    color: #2dc1c8;
+}
+
+.user-system {
+}
+
 .sent {
     position: relative;
-    max-width: 70% ;
+    max-width: 90% ;
     left: 25%;
 
     background-color: #e5f1e0 ;
@@ -100,7 +114,8 @@ div#chat button.menuButton:hover {
     background-color: #ff9e9e36 ;
 }
 
-.msg-file-link {
-    text-decoration: none ;
-    color: #2dc1c8;
+.msg-system {
+    color: white ;
+    background-color: black ;
+    
 }
