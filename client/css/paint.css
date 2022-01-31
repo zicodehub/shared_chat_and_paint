@@ -89,9 +89,8 @@ div#righColumn div#text p {
 }
 div#righColumn div#drawCommands {
     display: flex ;
-    top: 0;
-    height                      : 200px;
-    width                       : 400px;
+    position: absolute;
+    top: -60%;
 
     padding-bottom              : 10px;
     text-align                  : center;
@@ -106,21 +105,25 @@ div#righColumn div#drawCommands span {
     vertical-align: middle;
     align-items: center;
     align-content: flex-start;
-    margin                  : 10px 10px;
+    margin                  : 1px;
     cursor                  : pointer;
-    width: 70px ;
-    height: 70px;
+    width: 50px ;
+    height: 50px;
     border-radius: 45px ;
     color: white ;
 }
 
 div#righColumn div#drawCommands span img {
-    width: 50px ;
-    height: 50px;    
+    width: 30px ;
+    height: 30px;    
 }
 div#righColumn div#drawCommands #colors {
     display: flex;
-}
+    position: relative;
+    height: 50%;
+
+/*    background-color: red;
+*/}
 
 div#righColumn div#drawCommands ul li {
     text-align              : left;

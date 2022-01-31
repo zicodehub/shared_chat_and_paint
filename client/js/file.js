@@ -15,7 +15,7 @@ submitButton.addEventListener("click", (e)=> {
         fileInput.value = ""
 
         $("#chatMessages").append(
-	      `<p class="msg sent"><strong  class="user-name"> ${name} </strong> : <span class="msg-content msg-file"> <a href="/uploads/?path=${fileName}" download=${fileName} class="msg-file-link" > Télécharger le fichier </a> </span> </p> `
+	      `<p class="msg sent"><span class="msg-content msg-file"> <a href="/uploads/?path=${fileName}" download=${fileName} class="msg-file-link" > Télécharger le fichier </a> <br/> ${fileName} </span> </p> `
 	    );
 
     }, duration)

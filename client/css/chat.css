@@ -78,7 +78,7 @@ div#chat button.menuButton:hover {
 }
 
 .msg-content {
-    color: red;
+    color: gray;
 }
 
 .user-name {
@@ -98,4 +98,9 @@ div#chat button.menuButton:hover {
     position: relative;
 
     background-color: #ff9e9e36 ;
+}
+
+.msg-file-link {
+    text-decoration: none ;
+    color: #2dc1c8;
 }
