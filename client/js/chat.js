@@ -23,30 +23,35 @@ function ChatObject(socket, lastname, firstname) {
       $("#chatTextInput").val("");
 
       $("#chatMessages").append(
-        // display the message to the sende
-        "<p><strong>" + firstname + "</strong> : " + chatText + "</p>"
+        `<p class="msg sent"> <span class="msg-content msg-text">${chatText}</span> </p>`
       );
-      $("#chatMessages").get(0).scrollTop =
-        $("#chatMessages").get(0).scrollHeight;
+      $("#chatMessages").get(0).scrollTop = $("#chatMessages").get(0).scrollHeight;
     }
   }
 
   // This function is called when a chat message arrives. Called by the server !
   socket.on("message", (data) => {
-    console.log("dagiubuuuibioiuioussta", data);
+    // console.log("dagiubuuuibioiuioussta", data);
     // appends the incoming message to the messageLogs
     $("#chatMessages").append(
-      "<p><strong>" + data.lastname + "</strong> : " + data.msg + "</p>"
+        `<p class="msg received"><strong class="user-name"> ${data.firstname} </strong> :  <span class="msg-content msg-text">${data.msg}</span> </p>`
     );
-    $("#chatMessages").get(0).scrollTop =
-      $("#chatMessages").get(0).scrollHeight;
+    $("#chatMessages").get(0).scrollTop = $("#chatMessages").get(0).scrollHeight;
   });
+
+
+  socket.on("file", (data) => {
+    $("#chatMessages").append(
+      `<p class="msg received"><strong  class="user-name"> ${data.lastname} </strong> : <span class="msg-content msg-file"> <a href="/uploads/?path=${data.filePath}" download=${data.filePath} class="msg-file-link" > Télécharger le fichier </a> </span> </p> `
+    );
+  });
+
 
   socket.on("welcome", (data) => {
     console.log("Welcommmmme !!!", data);
     // appends the incoming message to the messageLogs
     $("#chatMessages").append(
-      "<p><strong>SYSTEME</strong> : " + data.msg + "</p>"
+        `<p class="msg received received-from-system"><strong class="user-name user-system"> Système </strong> :  <span class="msg_content">${data.msg}</span> </p>`
     );
     $("#chatMessages").get(0).scrollTop ;
     $("#chatMessages").get(0).scrollHeight;
@@ -54,3 +59,4 @@ function ChatObject(socket, lastname, firstname) {
 
 
 }
+  

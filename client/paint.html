@@ -4,11 +4,12 @@
     <title>Step 7 :: Simple Paint</title>
     <!-- note : in HTML5 no need to specify type=...-->
     <link rel="stylesheet" href="css/paint.css" />
+    <link rel="stylesheet" href="css/chat.css" />
    
   </head>
   <body>
     <div id="container">
-        <div id="content">
+        <div id="content" class="scrollbox">
             <div id="divCanvas">
                 <canvas id="canvasMain">
                     <p>Canvas tag not supported by your browser</p>
@@ -53,18 +54,26 @@
                     <h4>Simple web camera display</h4>
                     <video id="output" width="195" height="195" autoplay="true" autoplay>Put your fallback message here.</video>
                     <canvas id="preview" style="display: none" ></canvas>
-                    <div id="log">    
+                    <div id="log"></div>
                 </div>
-            </div>
             
+            </div>
         </div>
-        </div>
-<!--         <div id="chat">
-            <div id="chatMessages"></div>
+
+        <!-- Separator -->
+        <div class="handlerScrollBox"></div>
+        
+        <div id="chat" class="scrollbox">
+            <div id="chatMessages">
+            </div>
+            <div id="sendfile" >
+                <input type="file" id="siofu_input" />
+                <input type="submit" name="" id="send_siofu_input">
+            </div>
             <input type="text" id="chatTextInput">
-            <button class="menuButton" type="button" id="chatSendButton">Send</button>
+            <button class="menuButton" type="submit" id="chatSendButton">Send</button>
         </div>
- -->    </div>
+    </div>
 
 
      <script src="/socket.io/socket.io.js"></script>
@@ -73,7 +82,6 @@
         let url = JSON.parse(JSON.stringify(window.location)).href
         let params = new URLSearchParams(url)
         name = params.get("name")
-        console.log("ZOMAOAMOA", url, params)
         name = name ? name : prompt('votre nom')
         
         const lastname = name, firstname = name 
@@ -110,12 +118,8 @@ be served by the NodeJS server -->
             paint.processPaintCommand(paintCommand);
         })
 
-        console.log("COOL")
-        initCam() ;
-        console.log("SUPER")
         $("#constantWebcam").click(()=>{
             icam = true ;
-            console.log("Visio conf")
         })
 
         socket.on('stream',function(image){
@@ -130,5 +134,50 @@ be served by the NodeJS server -->
 
       });
  </script>
+ <script src="/siofu/client.js"></script>
+ <script src="js/file.js"></script>
+ <script type="text/javascript">
+     
+        var handler = document.querySelector('.handlerScrollBox');
+        var wrapper = handler.closest('.wrapper');
+        var boxA = document.querySelector('#content');
+        var boxB = document.querySelector('#chat');
+        var isHandlerDragging = false; 
+
+
+        document.addEventListener('mousedown', function(e) {
+          // If mousedown event is fired from .handler, toggle flag to true
+          if (e.target === handler) {
+            isHandlerDragging = true;
+          }
+        });
+
+        document.addEventListener('mousemove', function(e) {
+          // Don't do anything if dragging flag is false
+          if (!isHandlerDragging) {
+            return false;
+          }
+
+          // Get offset
+          var containerOffsetLeft = wrapper.offsetLeft;
+
+          // Get x-coordinate of pointer relative to container
+          var pointerRelativeXpos = e.clientX - containerOffsetLeft;
+          
+          // Arbitrary minimum width set on box A, otherwise its inner content will collapse to width of 0
+          var boxAminWidth = 60;
+
+          // Resize box A
+          // * 8px is the left/right spacing between .handler and its inner pseudo-element
+          // * Set flex-grow to 0 to prevent it from growing
+          boxA.style.width = (Math.max(boxAminWidth, pointerRelativeXpos - 8)) + 'px';
+          boxA.style.flexGrow = 0;
+        });
+
+        document.addEventListener('mouseup', function(e) {
+          // Turn off dragging flag when user mouse is up
+          isHandlerDragging = false;
+        });
+</script>
   </body>
 </html>
