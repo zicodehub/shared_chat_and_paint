@@ -1,14 +1,24 @@
+const videoGrid = document.getElementById("webcamDiv")
+const my_preview = document.getElementById("my_preview");
+var my_video = document.getElementById("output");
+
+const addVideoStream = (video, stream) => {
+	video.src = stream;
+	video.addEventListener("loadedmetadata", ()=>{
+		video.play()
+		videoGrid.append(video)
+	})
+}
+
 const initCam = () => {
-	var canvas = document.getElementById("preview");
-	var context = canvas.getContext('2d');
+	var context = my_preview.getContext('2d');
+	console.log('	début du recording')
+	my_preview.width = 900;
+	my_preview.height = 700;
 
-	canvas.width = 900;
-	canvas.height = 700;
+	my_preview.width = my_preview.width;
+	my_preview.height = my_preview.height;
 
-	context.width = canvas.width;
-	context.height = canvas.height;
-
-	var video = document.getElementById("output");
 
 	var socket = io();
 
@@ -18,13 +28,12 @@ const initCam = () => {
 
 	function loadCamera(stream){
 	  try {
-	      video.srcObject = stream;
+	      my_video.srcObject = stream;
 	      console.log("stream")
 	  } 
 	  
 	  catch (error) {
-	   video.src = URL.createObjectURL(stream);
-	      console.log("objetxt")
+   		console.log("objetxt")
 	  }
 
 	   logger("Camera connected");
@@ -37,7 +46,7 @@ const initCam = () => {
 
 	function Draw(video,context){
 	    context.drawImage(video,0,0,context.width,context.height);
-	    socket.emit('stream',canvas.toDataURL('image/webp'));
+	    socket.emit('stream',my_preview.toDataURL('image/webp'));
 	}
 
 	$(function(){
@@ -45,9 +54,10 @@ const initCam = () => {
 
 	    if(navigator.getUserMedia)
 	    {
+	    	console.log('cest ok')
 	        navigator.getUserMedia({
 	            video: true, 
-	            audio: false
+	            audio: true
 	        },loadCamera,loadFail);
 	    }
 	    else {
@@ -61,3 +71,10 @@ const initCam = () => {
 
 
 }
+
+const conference = () => {
+	let 
+}
+
+let dodo = document.getElementById("webcam")
+dodo.addEventListener("click", initCam)
